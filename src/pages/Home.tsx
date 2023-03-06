@@ -1,6 +1,8 @@
 import { Header } from "@/components/layout";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
+  const navigate = useNavigate();
   const routeInfo = [
     {
       category: "Chart",
@@ -55,7 +57,7 @@ export const Home = () => {
         {
           img: "",
           title: "Linear Chart",
-          path: "linear",
+          path: "about",
         },
         {
           img: "",
@@ -75,6 +77,7 @@ export const Home = () => {
       ],
     },
   ];
+
   return (
     <div>
       <Header />
@@ -91,8 +94,16 @@ export const Home = () => {
                       key={i}
                       className="flex flex-col justify-center items-center gap-1"
                     >
-                      <div className="w-48 h-32 rounded border border-slate-400"></div>
-                      <span className="text-sm">{r.title}</span>
+                      <div
+                        className="w-48 h-32 rounded border border-slate-400 overflow-hidden cursor-pointer"
+                        onClick={() => navigate(r.path)}
+                      ></div>
+                      <span
+                        className="text-sm cursor-pointer"
+                        onClick={() => navigate(r.path)}
+                      >
+                        {r.title}
+                      </span>
                     </div>
                   );
                 })}

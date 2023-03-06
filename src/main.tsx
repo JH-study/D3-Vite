@@ -5,10 +5,14 @@ import { Home } from "@/pages/Home";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "",
     children: [
       {
-        path: "about",
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/about",
         element: <div>about!</div>,
       },
     ],

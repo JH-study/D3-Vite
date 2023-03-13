@@ -5,7 +5,7 @@ import * as path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/D3-Vite/",
+  base: "/D3-Vite",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout";
 import { useNavigate } from "react-router-dom";
+import LinearChart from "@/assets/linearChart.png";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -9,70 +10,9 @@ export const Home = () => {
       desc: "",
       routes: [
         {
-          img: "",
+          src: LinearChart,
           title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-      ],
-    },
-    {
-      category: "Chart",
-      desc: "",
-      routes: [
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "about",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
+          path: "/line-chart",
         },
       ],
     },
@@ -97,7 +37,9 @@ export const Home = () => {
                       <div
                         className="w-48 h-32 rounded border border-slate-400 overflow-hidden cursor-pointer"
                         onClick={() => navigate(r.path)}
-                      ></div>
+                      >
+                        <img src={r.src} alt="" />
+                      </div>
                       <span
                         className="text-sm cursor-pointer"
                         onClick={() => navigate(r.path)}

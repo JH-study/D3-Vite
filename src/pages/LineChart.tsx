@@ -39,7 +39,7 @@ export const LineChart = () => {
     const r = range(data.length);
 
     const xScale = scaleUtc(
-      [min(x) ?? 0, max(x) ?? 0],
+      [min(x)!, max(x)!],
       [marginLeft, width - marginRight]
     );
     const yScale = scaleLinear(

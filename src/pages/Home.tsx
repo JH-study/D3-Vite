@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout";
 import { useNavigate } from "react-router-dom";
+import LinearChart from "@/assets/linearChart.png";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -9,70 +10,9 @@ export const Home = () => {
       desc: "",
       routes: [
         {
-          img: "",
+          src: LinearChart,
           title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-      ],
-    },
-    {
-      category: "Chart",
-      desc: "",
-      routes: [
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "about",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
+          path: "/line-chart",
         },
       ],
     },
@@ -88,7 +28,7 @@ export const Home = () => {
               <div className="text-2xl font-black">{epic.category}</div>
               <div>{epic.desc}</div>
               <div className="mt-5 flex flex-wrap w-full gap-3">
-                {epic.routes.map((r, i) => {
+                {epic.routes.map((route, i) => {
                   return (
                     <div
                       key={i}
@@ -96,13 +36,15 @@ export const Home = () => {
                     >
                       <div
                         className="w-48 h-32 rounded border border-slate-400 overflow-hidden cursor-pointer"
-                        onClick={() => navigate(r.path)}
-                      ></div>
+                        onClick={() => navigate(route.path)}
+                      >
+                        <img src={route.src} alt="" />
+                      </div>
                       <span
                         className="text-sm cursor-pointer"
-                        onClick={() => navigate(r.path)}
+                        onClick={() => navigate(route.path)}
                       >
-                        {r.title}
+                        {route.title}
                       </span>
                     </div>
                   );

@@ -1,6 +1,7 @@
 import { Header } from "@/components/layout";
 import { useNavigate } from "react-router-dom";
-import LinearChart from "@/assets/linearChart.png";
+import LineChart from "@/assets/lineChart.png";
+import MultiLineChart from "@/assets/multiLineChart.png";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -10,9 +11,14 @@ export const Home = () => {
       desc: "",
       routes: [
         {
-          src: LinearChart,
-          title: "Linear Chart",
+          src: LineChart,
+          title: "Line Chart",
           path: "/line-chart",
+        },
+        {
+          src: MultiLineChart,
+          title: "Multi Line Chart",
+          path: "/multi-line-chart",
         },
       ],
     },

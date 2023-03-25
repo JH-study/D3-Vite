@@ -10,6 +10,11 @@ export const Home = () => {
       desc: "",
       routes: [
         {
+          img: "",
+          title: "Bar Chart",
+          path: "bar-chart",
+        },
+        {
           src: LinearChart,
           title: "Linear Chart",
           path: "/line-chart",

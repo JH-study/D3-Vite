@@ -10,69 +10,8 @@ export const Home = () => {
       routes: [
         {
           img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-      ],
-    },
-    {
-      category: "Chart",
-      desc: "",
-      routes: [
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "about",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
-        },
-        {
-          img: "",
-          title: "Linear Chart",
-          path: "linear",
+          title: "Bar Chart",
+          path: "bar-chart",
         },
       ],
     },

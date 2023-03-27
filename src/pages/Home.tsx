@@ -15,6 +15,11 @@ export const Home = () => {
           title: "Line Chart",
           path: "/line-chart",
         },
+         {
+          src: "",
+          title: "Bar Chart",
+          path: "/bar-chart",
+        },
         {
           src: MultiLineChart,
           title: "Multi Line Chart",

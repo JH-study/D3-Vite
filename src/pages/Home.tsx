@@ -1,7 +1,8 @@
 import { Header } from "@/components/layout";
 import { useNavigate } from "react-router-dom";
 import LineChart from "@/assets/lineChart.png";
-import MultiLineChart from "@/assets/multiLineChart.png";
+import MultiLineChart from "@/assets/multiLineCharts.png";
+import CandleChart from "@/assets/candleChart.png";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ export const Home = () => {
           title: "Line Chart",
           path: "/line-chart",
         },
-         {
+        {
           src: "",
           title: "Bar Chart",
           path: "/bar-chart",
@@ -24,6 +25,11 @@ export const Home = () => {
           src: MultiLineChart,
           title: "Multi Line Chart",
           path: "/multi-line-chart",
+        },
+        {
+          src: CandleChart,
+          title: "Candle Chart",
+          path: "/candle-chart",
         },
       ],
     },

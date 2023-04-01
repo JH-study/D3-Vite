@@ -1,7 +1,7 @@
 import { Header } from "@/components/layout";
 import { useNavigate } from "react-router-dom";
 import LineChart from "@/assets/lineChart.png";
-import MultiLineChart from "@/assets/multiLineCharts.png";
+import MultiLineChart from "@/assets/multiLineChart.png";
 import CandleChart from "@/assets/candleChart.png";
 
 export const Home = () => {

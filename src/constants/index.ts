@@ -1,4 +1,5 @@
-export const CHART_TYPES = {
+export const SCALE_TYPES = {
   BAND: "band",
   LINEAR: "linear",
+  UTC: 'utc'
 };

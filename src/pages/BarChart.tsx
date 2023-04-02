@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
-import { BarChartConfig } from "@/utils/chartConfigs";
+import { BarChartConfig } from "@/utils/chartConfig";
 import { Header } from "@/components/layout";
-import { CHART_TYPES } from "@/constants";
+import { SCALE_TYPES } from "@/constants";
 import { IData } from "@/types";
 
 const BAR_CHART_CONFIG_STYLE_VALUES = {
@@ -13,6 +13,9 @@ const BAR_CHART_CONFIG_STYLE_VALUES = {
   },
   width: 1000,
   height: 500,
+  bar: {
+    color:  "#af23f2"
+  }
 };
 
 export const BarChart = ({ data }: { data: IData[] }) => {
@@ -29,10 +32,10 @@ export const BarChart = ({ data }: { data: IData[] }) => {
       .setWidth()
       .setHeight()
       .setXScale({
-        type: CHART_TYPES.BAND,
+        type: SCALE_TYPES.BAND,
       })
       .setYScale({
-        type: CHART_TYPES.LINEAR,
+        type: SCALE_TYPES.LINEAR,
       })
       .setXAxis()
       .setYAxis()

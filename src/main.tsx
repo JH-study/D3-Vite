@@ -7,6 +7,7 @@ import { BAR_CHART_DATA, LINE_CHART_DATA } from "./data";
 import { LineChart } from "./pages/LineChart";
 import { MultiLineChart } from "./pages/MultiLineChart";
 import { CandleChart } from "./pages/CandleChart";
+import { AnimationLineChart } from "./pages/AnimationLineChart";
 
 const router = createBrowserRouter(
   [
@@ -32,6 +33,10 @@ const router = createBrowserRouter(
         {
           path: "/candle-chart",
           element: <CandleChart />,
+        },
+        {
+          path: "/animation-line-chart",
+          element: <AnimationLineChart />,
         },
       ],
       errorElement: <Home />,

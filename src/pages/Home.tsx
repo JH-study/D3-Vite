@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import LineChart from "@/assets/lineChart.png";
 import MultiLineChart from "@/assets/multiLineChart.png";
 import CandleChart from "@/assets/candleChart.png";
+import AnimationLineChart from "@/assets/animationLineChart.png";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -30,6 +31,11 @@ export const Home = () => {
           src: CandleChart,
           title: "Candle Chart",
           path: "/candle-chart",
+        },
+        {
+          src: AnimationLineChart,
+          title: "Animation Line Chart",
+          path: "/animation-line-chart",
         },
       ],
     },

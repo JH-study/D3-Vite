@@ -1,5 +1,5 @@
 import BaseChartConfig from "./base";
-import { IData } from "@/types";
+import { IPlainData } from "@/types";
 import dayjs from "dayjs";
 import {
   select,
@@ -15,7 +15,7 @@ import {
 } from "d3";
 
 export class LineChartConfig extends BaseChartConfig {
-  constructor(svg: SVGElement, data: IData[], styleValues: any) {
+  constructor(svg: SVGElement, data: IPlainData[], styleValues: any) {
     super(svg, data, styleValues);
 
     this.X = data.map((d) => dayjs(d.x).unix() * 1000);

@@ -1,8 +1,8 @@
 import BaseChartConfig from "./base";
-import { IData } from "@/types";
+import { IPlainData } from "@/types";
 
 export class BarChartConfig extends BaseChartConfig {
-  constructor(svg: SVGElement, data: IData[], styleValues: any) {
+  constructor(svg: SVGElement, data: IPlainData[], styleValues: any) {
     super(svg, data, styleValues);
   }
 
@@ -16,12 +16,12 @@ export class BarChartConfig extends BaseChartConfig {
 
     bars
       .attr("class", "bar")
-      .attr("x", (d: IData) => this.xScale(d.x))
-      .attr("y", (d: IData) => this.yScale(d.y))
+      .attr("x", (d: IPlainData) => this.xScale(d.x))
+      .attr("y", (d: IPlainData) => this.yScale(d.y))
       .attr("width", this.xScale.bandwidth())
       .attr(
         "height",
-        (d: IData) =>
+        (d: IPlainData) =>
           this.styleValues.height -
           this.yScale(d.y) -
           this.styleValues.margin.bottom

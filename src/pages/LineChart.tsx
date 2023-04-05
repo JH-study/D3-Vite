@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Header } from "@/components/layout";
-import { IData } from "@/types";
-import { LineChartConfig } from "@/utils/chartConfig/line";
+import { IPlainData } from "@/types";
+import { LineChartConfig } from "@/utils/chartConfig";
 import { SCALE_TYPES } from "@/constants";
 
 const LINE_CHART_CONFIG_STYLE_VALUES = {
@@ -22,7 +22,7 @@ const LINE_CHART_CONFIG_STYLE_VALUES = {
   },
 };
 
-export const LineChart = ({ data }: { data: IData[] }) => {
+export const LineChart = ({ data }: { data: IPlainData[] }) => {
   const ref = useRef(null);
 
   useEffect(() => {

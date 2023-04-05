@@ -10,7 +10,7 @@ import {
   scaleUtc,
 } from "d3";
 import { SCALE_TYPES } from "@/constants";
-import { IData } from "@/types";
+import { IPlainData } from "@/types";
 
 export default class BaseChartConfig {
   styleValues: any;
@@ -18,18 +18,18 @@ export default class BaseChartConfig {
   xScale: any;
   yScale: any;
 
-  D: IData[];
+  D: IPlainData[];
   X: any;
   Y: number[];
   R: any;
 
-  constructor(svgRef: SVGElement, data: IData[], styleValues: any) {
+  constructor(svgRef: SVGElement, data: IPlainData[], styleValues: any) {
     this.styleValues = styleValues;
     this.svg = select(svgRef);
 
     this.D = data;
-    this.X = map(this.D, (d: IData) => d.x);
-    this.Y = map(this.D, (d: IData) => d.y);
+    this.X = map(this.D, (d: IPlainData) => d.x);
+    this.Y = map(this.D, (d: IPlainData) => d.y);
   }
 
   setWidth() {

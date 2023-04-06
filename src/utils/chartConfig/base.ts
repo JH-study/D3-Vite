@@ -8,6 +8,7 @@ import {
   max,
   min,
   scaleUtc,
+  range,
 } from "d3";
 import { SCALE_TYPES } from "@/constants";
 import { IPlainData } from "@/types";
@@ -21,6 +22,7 @@ export default class BaseChartConfig {
   D: IPlainData[];
   X: any;
   Y: number[];
+  Z: string[];
   R: any;
 
   constructor(svgRef: SVGElement, data: IPlainData[], styleValues: any) {
@@ -30,6 +32,8 @@ export default class BaseChartConfig {
     this.D = data;
     this.X = map(this.D, (d: IPlainData) => d.x);
     this.Y = map(this.D, (d: IPlainData) => d.y);
+    this.Z = map(this.D, (d: IPlainData) => d.z);
+    this.R = range(data.length);
   }
 
   setWidth() {

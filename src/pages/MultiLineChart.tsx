@@ -15,133 +15,126 @@ import {
 } from "d3";
 import * as d3 from "d3";
 import { MULTI_LINE_CHART_DATA } from "@/utils/sample/multilinedata";
+import { MultiLineChartConfig } from "@/utils/chartConfig/multiline";
+import { SCALE_TYPES } from "@/constants";
+
+const LINE_CHART_CONFIG_STYLE_VALUES = {
+  margin: {
+    top: 20,
+    right: 30,
+    bottom: 30,
+    left: 40,
+  },
+  width: 1152,
+  height: 500,
+  line: {
+    color: "steelblue",
+    strokeWidth: 1.5,
+    strokeOpacity: 1,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+  },
+  yLabel: "↑ Unemployment (%)",
+  mixBlendMode: "multiply",
+};
 
 export const MultiLineChart = () => {
   const svgRef = useRef(null);
-  const width = 1152;
-  const height = 500;
-
-  const marginTop = 20;
-  const marginBottom = 30;
-  const marginRight = 30;
-  const marginLeft = 40;
-
-  const color = "steelblue";
-  const strokeWidth = 1.5;
-  const strokeOpacity = 1;
-  const strokeLinecap = "round";
-  const strokeLinejoin = "round";
-
-  const yLabel = "↑ Unemployment (%)";
-  const mixBlendMode = "multiply";
 
   console.log(MULTI_LINE_CHART_DATA);
-  
+
   useEffect(() => {
     const svg = select(svgRef.current!);
 
-    const x = MULTI_LINE_CHART_DATA.map((d) => dayjs(d.x).unix() * 1000);
-    const y = MULTI_LINE_CHART_DATA.map((d) => d.y);
-    const z = MULTI_LINE_CHART_DATA.map((d) => d.z);
-
-    const r = range(MULTI_LINE_CHART_DATA.length);
-
-    const xScale = scaleUtc(
-      [min(x)!, max(x)!],
-      [marginLeft, width - marginRight]
-    );
-    const yScale = scaleLinear(
-      [0, max(y)!],
-      [height - marginBottom, marginTop]
+    const multiLineChartConfig = new MultiLineChartConfig(
+      svgRef.current!,
+      MULTI_LINE_CHART_DATA,
+      LINE_CHART_CONFIG_STYLE_VALUES
     );
 
-    const xAxis = axisBottom(xScale).ticks(width / 80);
-    const yAxis = axisLeft(yScale).ticks(height / 40);
-
-    const l = line()
-      .curve(curveLinear)
-      .x((arr) => xScale(x[arr[0]]))
-      .y((arr) => yScale(y[arr[1]]));
-
-    svg
-      .attr("width", width)
-      .attr("height", height)
-      .attr("viewBox", [0, 0, width, height])
-      .attr("style", "max-width: 100%; height: auto; height: intrinsic;")
-      .style("-webkit-tap-highlight-color", "transparent")
-      .on("pointerenter", () => {
-        path.style("mix-blend-mode", null).style("stroke", "#ddd");
-        dot.attr("display", null);
+    multiLineChartConfig
+      .setWidth()
+      .setHeight()
+      .setXScale({
+        type: SCALE_TYPES.UTC,
       })
-      .on("pointermove", (event) => {
-        const [xm, ym] = d3.pointer(event);
-        const i = d3.least(r, (i) =>
-          Math.hypot(xScale(x[i]) - xm, yScale(y[i]) - ym)
-        ); // closest point
-        if (!!i && i > -1) {
-          path
-            .style("stroke", ([zIdx]) => (z[i] === zIdx ? null : "#ddd"))
-            .filter(([zIdx]) => z[i] === zIdx)
-            .raise();
-          dot.attr("transform", `translate(${xScale(x[i])},${yScale(y[i])})`);
-          dot.select("text").text(z[i]);
-        }
+      .setYScale({
+        type: SCALE_TYPES.LINEAR,
       })
-      .on("pointerleave", () => {
-        path.style("mix-blend-mode", mixBlendMode).style("stroke", null);
-        dot.attr("display", "none");
-      })
-      .on("touchstart", (event) => event.preventDefault());
+      .setXAxis()
+      .setYAxis()
+      .setLine();
 
-    svg
-      .append("g")
-      .attr("transform", `translate(0,${height - marginBottom})`)
-      .call(xAxis);
+    // const l = line()
+    //   .curve(curveLinear)
+    //   .x((arr) => xScale(x[arr[0]]))
+    //   .y((arr) => yScale(y[arr[1]]));
 
-    svg
-      .append("g")
-      .attr("transform", `translate(${marginLeft},0)`)
-      .call(yAxis)
-      .call((g) => g.select(".domain").remove())
-      .call((g) =>
-        g
-          .selectAll(".tick line")
-          .clone()
-          .attr("x2", width - marginLeft - marginRight)
-          .attr("stroke-opacity", 0.1)
-      )
-      .call((g) =>
-        g
-          .append("text")
-          .attr("x", -marginLeft)
-          .attr("y", 10)
-          .attr("fill", "currentColor")
-          .attr("text-anchor", "start")
-          .text(yLabel)
-      );
+    // svg
+    //   .attr("width", width)
+    //   .attr("height", height)
+    //   .attr("viewBox", [0, 0, width, height])
+    //   .attr("style", "max-width: 100%; height: auto; height: intrinsic;")
+    //   .style("-webkit-tap-highlight-color", "transparent")
+    //   .on("pointerenter", () => {
+    //     path.style("mix-blend-mode", null).style("stroke", "#ddd");
+    //     dot.attr("display", null);
+    //   })
+    //   .on("pointermove", (event) => {
+    //     const [xm, ym] = d3.pointer(event);
+    //     const i = d3.least(r, (i) =>
+    //       Math.hypot(xScale(x[i]) - xm, yScale(y[i]) - ym)
+    //     ); // closest point
+    //     if (!!i && i > -1) {
+    //       path
+    //         .style("stroke", ([zIdx]) => (z[i] === zIdx ? null : "#ddd"))
+    //         .filter(([zIdx]) => z[i] === zIdx)
+    //         .raise();
+    //       dot.attr("transform", `translate(${xScale(x[i])},${yScale(y[i])})`);
+    //       dot.select("text").text(z[i]);
+    //     }
+    //   })
+    //   .on("pointerleave", () => {
+    //     path.style("mix-blend-mode", mixBlendMode).style("stroke", null);
+    //     dot.attr("display", "none");
+    //   })
+    //   .on("touchstart", (event) => event.preventDefault());
 
-    const path = svg
-      .append("g")
-      .attr("fill", "none")
-      .attr("stroke", color)
-      .attr("stroke-linecap", strokeLinecap)
-      .attr("stroke-linejoin", strokeLinejoin)
-      .attr("stroke-width", strokeWidth)
-      .attr("stroke-opacity", strokeOpacity)
-      .selectAll("path")
-      .data(d3.group(r, (i) => z[i]))
-      .join("path")
-      .style("mix-blend-mode", mixBlendMode)
-      .attr("d", ([, arr]) => l(arr.map((n) => [n, n])));
+    // svg
+    //   .append("g")
+    //   .attr("transform", `translate(0,${height - marginBottom})`)
+    //   .call(xAxis);
 
-    const dot = svg.append("g").attr("display", "none");
-    dot.append("circle").attr("r", 2.5);
-    dot
-      .append("text")
-      .attr("font-family", "sans-serif")
-      .attr("font-size", 10)
-      .attr("text-anchor", "middle")
-      .attr("y", -8);
+    // svg
+    //   .append("g")
+    //   .attr("transform", `translate(${marginLeft},0)`)
+    //   .call(yAxis)
+    //   .call((g) => g.select(".domain").remove())
+    //   .call((g) =>
+    //     g
+    //       .selectAll(".tick line")
+    //       .clone()
+    //       .attr("x2", width - marginLeft - marginRight)
+    //       .attr("stroke-opacity", 0.1)
+    //   )
+    //   .call((g) =>
+    //     g
+    //       .append("text")
+    //       .attr("x", -marginLeft)
+    //       .attr("y", 10)
+    //       .attr("fill", "currentColor")
+    //       .attr("text-anchor", "start")
+    //       .text(yLabel)
+    //   );
+
+    // const dot = svg.append("g").attr("display", "none");
+    // dot.append("circle").attr("r", 2.5);
+    // dot
+    //   .append("text")
+    //   .attr("font-family", "sans-serif")
+    //   .attr("font-size", 10)
+    //   .attr("text-anchor", "middle")
+    //   .attr("y", -8);
   }, []);
 
   return (

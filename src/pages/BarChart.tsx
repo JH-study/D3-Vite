@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { BarChartConfig } from "@/utils/chartConfig";
 import { Header } from "@/components/layout";
 import { SCALE_TYPES } from "@/constants";
-import { IData } from "@/types";
+import { IPlainData } from "@/types";
 
 const BAR_CHART_CONFIG_STYLE_VALUES = {
   margin: {
@@ -14,11 +14,11 @@ const BAR_CHART_CONFIG_STYLE_VALUES = {
   width: 1000,
   height: 500,
   bar: {
-    color:  "#af23f2"
-  }
+    color: "#af23f2",
+  },
 };
 
-export const BarChart = ({ data }: { data: IData[] }) => {
+export const BarChart = ({ data }: { data: IPlainData[] }) => {
   const ref = useRef(null);
 
   useEffect(() => {

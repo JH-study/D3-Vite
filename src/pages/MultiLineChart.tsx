@@ -14,7 +14,7 @@ import {
   min,
 } from "d3";
 import * as d3 from "d3";
-import { data } from "@/utils/sample/multilinedata";
+import { MULTI_LINE_CHART_DATA } from "@/utils/sample/multilinedata";
 
 export const MultiLineChart = () => {
   const svgRef = useRef(null);
@@ -35,14 +35,16 @@ export const MultiLineChart = () => {
   const yLabel = "↑ Unemployment (%)";
   const mixBlendMode = "multiply";
 
+  console.log(MULTI_LINE_CHART_DATA);
+  
   useEffect(() => {
     const svg = select(svgRef.current!);
 
-    const x = data.map((d) => dayjs(d.date).unix() * 1000);
-    const y = data.map((d) => d.unemployment);
-    const z = data.map((d) => d.division);
+    const x = MULTI_LINE_CHART_DATA.map((d) => dayjs(d.x).unix() * 1000);
+    const y = MULTI_LINE_CHART_DATA.map((d) => d.y);
+    const z = MULTI_LINE_CHART_DATA.map((d) => d.z);
 
-    const r = range(data.length);
+    const r = range(MULTI_LINE_CHART_DATA.length);
 
     const xScale = scaleUtc(
       [min(x)!, max(x)!],

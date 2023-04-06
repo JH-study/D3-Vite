@@ -32,7 +32,7 @@ export default class BaseChartConfig {
     this.D = data;
     this.X = map(this.D, (d: IPlainData) => d.x);
     this.Y = map(this.D, (d: IPlainData) => d.y);
-    this.Z = map(this.D, (d: IPlainData) => d.z);
+    this.Z = map(this.D, (d: IPlainData) => d.z ?? "");
     this.R = range(data.length);
   }
 

@@ -9,6 +9,7 @@ import { MultiLineChart } from "./pages/MultiLineChart";
 import { CandleChart } from "./pages/CandleChart";
 import { AnimationLineChart } from "./pages/AnimationLineChart";
 import Zooming from "./pages/Zooming";
+import { AnimationBarChart } from "./pages/AnimationBarChart";
 
 const router = createBrowserRouter(
   [
@@ -38,6 +39,10 @@ const router = createBrowserRouter(
         {
           path: "/animation-line-chart",
           element: <AnimationLineChart />,
+        },
+        {
+          path: "/animation-bar-chart",
+          element: <AnimationBarChart />,
         },
         {
           path: "/zooming",

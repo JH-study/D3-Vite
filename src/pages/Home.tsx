@@ -4,6 +4,8 @@ import LineChart from "@/assets/lineChart.png";
 import MultiLineChart from "@/assets/multiLineChart.png";
 import CandleChart from "@/assets/candleChart.png";
 import AnimationLineChart from "@/assets/animationLineChart.png";
+import AnimationBarChart from "@/assets/animationBarChart.png";
+import Zooming from "@/assets/zooming.png";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -36,6 +38,16 @@ export const Home = () => {
           src: AnimationLineChart,
           title: "Animation Line Chart",
           path: "/animation-line-chart",
+        },
+        {
+          src: AnimationBarChart,
+          title: "Animation Bar Chart",
+          path: "/animation-bar-chart",
+        },
+        {
+          src: Zooming,
+          title: "Zooming",
+          path: "/zooming",
         },
       ],
     },
